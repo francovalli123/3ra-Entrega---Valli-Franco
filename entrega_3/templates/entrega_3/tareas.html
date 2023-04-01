@@ -1,0 +1,18 @@
+{% extends 'entrega_3/base.html'%}
+
+{%block titulo%} Listado de Tareas {%endblock%}
+
+{% block listado %}
+
+<form action="{% url 'tareas' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+</form>
+
+<ul>
+    {%  for tarea in tareas %}
+        <li>{{ tarea.nombre }} - {{ tarea.creado_el }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

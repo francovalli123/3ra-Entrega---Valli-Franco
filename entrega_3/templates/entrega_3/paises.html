@@ -1,0 +1,21 @@
+{% extends 'entrega_3/base.html'%}
+
+
+{%block titulo%} Listado de paises {%endblock%}
+
+{%block listado%}
+
+<form action="{% url 'paises' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+</form>
+
+<ul>
+    {%  for pais in paises %}
+        <li>{{pais}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block title %} Total: {{total_paises}} {% endblock %}
